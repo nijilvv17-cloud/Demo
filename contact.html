@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | MINI DAIRY FARM</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#eef8ff;
+color:#333;
+}
+
+/* Header */
+
+header{
+background:#0b74d1;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+position:sticky;
+top:0;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo i{
+font-size:30px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-size:18px;
+}
+
+nav a:hover{
+color:#ffe600;
+}
+
+/* Banner */
+
+.banner{
+background:linear-gradient(rgba(11,116,209,.75),rgba(11,116,209,.75)),
+url("https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+height:300px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.banner h1{
+font-size:50px;
+}
+
+.banner p{
+margin-top:10px;
+font-size:20px;
+}
+
+.container{
+max-width:1100px;
+margin:50px auto;
+padding:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+.card h2{
+color:#0b74d1;
+margin-bottom:20px;
+}
+
+.card p{
+margin:15px 0;
+font-size:18px;
+}
+
+.card i{
+color:#0b74d1;
+margin-right:10px;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:2px solid #0b74d1;
+border-radius:10px;
+font-size:16px;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+button{
+background:#0b74d1;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:10px;
+font-size:17px;
+cursor:pointer;
+}
+
+button:hover{
+background:#005fa3;
+}
+
+.map{
+margin-top:20px;
+border-radius:15px;
+overflow:hidden;
+}
+
+footer{
+margin-top:40px;
+background:#0b74d1;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+}
+
+nav{
+margin-top:10px;
+}
+
+nav a{
+display:inline-block;
+margin:8px;
+}
+
+.banner h1{
+font-size:35px;
+}
+
+.container{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<i class="fas fa-cow"></i>
+<h2>MINI DAIRY FARM</h2>
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="billing.html">Billing</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+</header>
+
+<div class="banner">
+<div>
+<h1>Contact Us</h1>
+<p>We are always happy to help you.</p>
+</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Contact Information</h2>
+
+<p><i class="fas fa-map-marker-alt"></i> MINI DAIRY FARM, Your Location</p>
+
+<p><i class="fas fa-phone"></i> +91 79070XXXXX</p>
+
+<p><i class="fas fa-envelope"></i> minidairy****@gmail.com</p>
+
+<p><i class="fas fa-clock"></i> Open Daily: 5:00 AM – 8:00 PM</p>
+
+<div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.6639021434488!2d75.36366131097917!3d12.273810399053104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba45d9e2fbe89ab%3A0xafa5be5105111138!2sCherupuzha%2C%20Kerala%20670511!5e0!3m2!1sen!2sin!4v1785349099921!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+</iframe>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Send a Message</h2>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea placeholder="Type your message here..."></textarea>
+
+<button onclick="alert('Thank you! Your message has been sent.')">
+Send Message
+</button>
+
+<br><br>
+
+<a href="https://wa.me/790709XXXXX" target="_blank">
+<button style="background:#25D366;">
+<i class="fab fa-whatsapp"></i>
+Chat on WhatsApp
+</button>
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+<h2>MINI DAIRY FARM</h2>
+
+<p>Fresh Milk • Dairy Products • Premium Cattle Feed</p>
+
+<p style="margin-top:10px;">
+© 2026 MINI DAIRY FARM. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>

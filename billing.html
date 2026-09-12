@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MINI DAIRY FARM - Billing</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#eaf6ff;
+}
+
+header{
+background:#0b74d1;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h1{
+font-size:28px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:10px;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#ffe600;
+}
+
+
+.container{
+
+width:90%;
+max-width:1100px;
+margin:30px auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 15px #aaa;
+
+}
+
+
+.container h2{
+
+text-align:center;
+color:#0b74d1;
+margin-bottom:25px;
+
+}
+
+
+.shop-info{
+
+text-align:center;
+margin-bottom:25px;
+color:#333;
+
+}
+
+
+.form{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+
+}
+
+
+label{
+
+font-weight:bold;
+display:block;
+margin-bottom:8px;
+
+}
+
+
+input,select{
+
+width:100%;
+padding:12px;
+border:2px solid #0b74d1;
+border-radius:8px;
+font-size:16px;
+
+}
+
+
+.buttons{
+
+text-align:center;
+margin:25px;
+
+}
+
+
+button{
+
+background:#0b74d1;
+color:white;
+border:none;
+padding:12px 20px;
+margin:5px;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+
+}
+
+
+button:hover{
+
+background:#005fa3;
+
+}
+
+
+table{
+
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+
+}
+
+
+th{
+
+background:#0b74d1;
+color:white;
+padding:12px;
+
+}
+
+
+td{
+
+border:1px solid #ccc;
+padding:10px;
+text-align:center;
+
+}
+
+
+.total{
+
+text-align:right;
+font-size:22px;
+font-weight:bold;
+color:#0b74d1;
+margin-top:20px;
+
+}
+
+
+footer{
+
+background:#0b74d1;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
+
+}
+
+
+#receipt{
+
+display:none;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>🐄 MINI DAIRY FARM</h1>
+
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="products.html">Products</a>
+
+<a href="about.html">About</a>
+
+<a href="contact.html">Contact</a>
+
+<a href="billing.html">Billing</a>
+
+</nav>
+
+
+</header>
+
+
+<div class="container">
+
+
+<h2>Billing System</h2>
+
+
+<div class="shop-info">
+
+<h3>MINI DAIRY FARM</h3>
+
+<p>Fresh Milk • Dairy Products • Farm Essentials</p>
+
+<p>Email: nijilvv17@gmail.com</p>
+
+<p>Phone: +91 790709XXXX</p>
+
+
+</div>
+
+
+<div class="form">
+
+
+<div>
+
+<label>Customer Name</label>
+
+<input type="text" id="customer" placeholder="Enter customer name">
+
+</div>
+
+
+<div>
+
+<label>Payment Method</label>
+
+<select id="payment">
+
+<option>Cash</option>
+
+<option>UPI</option>
+
+<option>Card</option>
+
+</select>
+
+</div>
+<div>
+
+<label>Select Product</label>
+
+<select id="product">
+
+<option value="13.5">Cow Milk 250 ml - ₹13.50</option>
+
+<option value="22">Cow Milk 500 ml - ₹22</option>
+
+<option value="54">Cow Milk 1 Litre - ₹54</option>
+
+<option value="40">Curd - ₹40</option>
+
+<option value="350">Ghee (500g) - ₹350</option>
+
+<option value="8">Egg - ₹8</option>
+
+<option value="1350">OK Feed - ₹1350</option>
+
+<option value="1280">Cow Feed - ₹1280</option>
+
+<option value="900">Milk Can - ₹900</option>
+
+<option value="1450">Calf Starter - ₹1450</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Quantity</label>
+
+<input type="number" id="qty" value="1" min="1">
+
+</div>
+
+
+</div>
+
+
+<div class="buttons">
+
+<button onclick="addItem()">
+➕ Add Item
+</button>
+
+
+<button onclick="printBill()">
+🖨️ Print Bill
+</button>
+
+
+<button onclick="location.reload()">
+🆕 New Bill
+</button>
+
+</div>
+
+
+
+<table id="billTable">
+
+<tr>
+
+<th>Sl.No</th>
+
+<th>Product</th>
+
+<th>Qty</th>
+
+<th>Rate</th>
+
+<th>Amount</th>
+
+<th>Remove</th>
+
+</tr>
+
+
+</table>
+
+
+
+<div class="total">
+
+Grand Total : ₹ <span id="grandTotal">0.00</span>
+
+</div>
+
+
+
+</div>
+
+
+<footer>
+
+<h3>MINI DAIRY FARM</h3>
+
+<p>Fresh Milk • Curd • Ghee • Egg • Cow Feeds • Cans • Starters</p>
+
+<p>Quality Dairy Products Everyday</p>
+
+</footer>
+
+
+<!-- Printable Receipt Section Starts -->
+
+<div id="receipt">
+
+</div>
+<div id="receipt">
+
+<center>
+
+<h2>MINI DAIRY FARM</h2>
+
+<p>Fresh Milk • Dairy Products • Farm Essentials</p>
+
+<p>Milk | Curd | Ghee | Egg | Cow Feeds | Cans | Starters</p>
+
+<hr>
+
+<p>
+<b>Email:</b> nijilvv17@gmail.com
+</p>
+
+<p>
+<b>Phone:</b> +91 790709XXXX
+</p>
+
+</center>
+
+
+<hr>
+
+
+<p>
+<b>INVOICE NO:</b>
+<span id="rBillNo"></span>
+</p>
+
+
+<p>
+<b>Date:</b>
+<span id="rDate"></span>
+</p>
+
+
+<p>
+<b>Time:</b>
+<span id="rTime"></span>
+</p>
+
+
+<p>
+<b>Customer:</b>
+<span id="rCustomer"></span>
+</p>
+
+
+<p>
+<b>Payment:</b>
+<span id="rPayment"></span>
+</p>
+
+
+<hr>
+
+
+<table id="receiptTable" width="100%" border="1" cellspacing="0" cellpadding="6">
+
+
+<tr>
+
+<th>Sl</th>
+
+<th>Item</th>
+
+<th>Qty</th>
+
+<th>Rate</th>
+
+<th>Amount</th>
+
+</tr>
+
+
+</table>
+
+
+<hr>
+
+
+<h3 style="text-align:right;">
+
+Grand Total: ₹<span id="rGrandTotal">0.00</span>
+
+</h3>
+
+
+<hr>
+
+
+<center>
+
+<h3>THANK YOU! VISIT AGAIN</h3>
+
+<p>
+MINI DAIRY FARM
+</p>
+
+<p>
+Quality Dairy Products Everyday
+</p>
+
+</center>
+
+
+</div>
+<script>
+
+let total = 0;
+let count = 1;
+
+
+// Generate Invoice Number
+
+let invoice =
+"MDF" + Math.floor(Math.random() * 9000 + 1000);
+
+document.getElementById("rBillNo").innerHTML = invoice;
+
+
+// Date and Time
+
+let current = new Date();
+
+document.getElementById("rDate").innerHTML =
+current.toLocaleDateString();
+
+document.getElementById("rTime").innerHTML =
+current.toLocaleTimeString();
+
+
+
+// Add Product Function
+
+function addItem(){
+
+let product =
+document.getElementById("product");
+
+
+let productName =
+product.options[product.selectedIndex].text;
+
+
+let rate =
+parseFloat(product.value);
+
+
+let qty =
+parseInt(document.getElementById("qty").value);
+
+
+
+if(qty <= 0 || isNaN(qty)){
+
+alert("Enter valid quantity");
+
+return;
+
+}
+
+
+let amount = rate * qty;
+
+
+total += amount;
+
+
+
+let table =
+document.getElementById("billTable");
+
+
+let row =
+table.insertRow();
+
+
+
+row.insertCell(0).innerHTML = count++;
+
+row.insertCell(1).innerHTML = productName;
+
+row.insertCell(2).innerHTML = qty;
+
+row.insertCell(3).innerHTML = "₹"+rate;
+
+row.insertCell(4).innerHTML = "₹"+amount.toFixed(2);
+
+
+row.insertCell(5).innerHTML =
+"<button onclick='removeItem(this,"+amount+")'>❌</button>";
+
+
+
+document.getElementById("grandTotal").innerHTML =
+total.toFixed(2);
+
+
+}
+
+
+
+// Remove Item Function
+
+function removeItem(button, amount){
+
+let row =
+button.parentElement.parentElement;
+
+
+row.remove();
+
+
+total -= amount;
+
+
+if(total < 0){
+
+total = 0;
+
+}
+
+
+document.getElementById("grandTotal").innerHTML =
+total.toFixed(2);
+
+}
+
+
+
+// Print Bill Function
+
+function printBill(){
+
+let customer = document.getElementById("customer").value;
+
+if(customer==""){
+    customer="Walk-in Customer";
+}
+
+
+let payment = document.getElementById("payment").value;
+
+let billTable = document.getElementById("billTable");
+
+let items = "";
+
+for(let i=1; i<billTable.rows.length; i++){
+
+items += `
+<tr>
+<td>${billTable.rows[i].cells[1].innerText}</td>
+<td>${billTable.rows[i].cells[2].innerText}</td>
+<td>${billTable.rows[i].cells[3].innerText}</td>
+<td>${billTable.rows[i].cells[4].innerText}</td>
+</tr>
+`;
+
+}
+
+
+let receipt = `
+<html>
+
+<head>
+
+<title>MINI DAIRY FARM</title>
+
+<style>
+
+body{
+font-family:monospace;
+width:300px;
+margin:auto;
+}
+
+h2,h3,p{
+text-align:center;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:5px;
+border-bottom:1px dashed black;
+font-size:13px;
+}
+
+.total{
+text-align:right;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h2>MINI DAIRY FARM</h2>
+
+<p>Fresh Milk • Dairy Products</p>
+
+<p>Phone: +91 790709XXXX</p>
+
+<p>Email: nijilvv17@gmail.com</p>
+
+<hr>
+
+<p>Customer: ${customer}</p>
+
+<p>Payment: ${payment}</p>
+
+<hr>
+
+
+<table>
+
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Rate</th>
+<th>Total</th>
+</tr>
+
+${items}
+
+</table>
+
+
+<hr>
+
+
+<h3 class="total">
+Grand Total: ₹${document.getElementById("grandTotal").innerText}
+</h3>
+
+
+<hr>
+
+<h3>THANK YOU! VISIT AGAIN</h3>
+
+<p>MINI DAIRY FARM</p>
+
+
+</body>
+
+</html>
+`;
+
+
+let printWindow = window.open("","_blank","width=400,height=600");
+
+
+printWindow.document.open();
+
+printWindow.document.write(receipt);
+
+printWindow.document.close();
+
+
+setTimeout(function(){
+
+printWindow.print();
+
+},500);
+
+
+}
+
+</script>
